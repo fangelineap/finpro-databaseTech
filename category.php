@@ -1,0 +1,92 @@
+<?php
+
+$conn = mysqli_connect("localhost", "root", "", "sistemPerpustakaan");
+
+$query = "SELECT * FROM kategori ORDER BY namaKategori";
+$result = mysqli_query($conn, $query);
+
+if( isset($_POST["search"]))
+{
+    $keyword = $_POST["keyword"];
+    if( $keyword == '')
+    {
+        $querySearch = "SELECT * FROM kategori";
+        $result = mysqli_query($conn, $querySearch);
+    }
+    else
+    {
+        $querySearch = "SELECT * FROM kategori WHERE 
+        idKategori LIKE '%$keyword%' OR
+        namaKategori LIKE '%$keyword%'
+        ";
+        $result = mysqli_query($conn, $querySearch);
+    }
+}
+
+if( isset($_POST["back"]))
+{
+    header("Location: admin.php");
+}
+
+if( isset($_POST["add"]))
+{
+    header("Location: addCategory.php");
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+    if( isset($_POST["loginadmin"]))
+    {
+        header("Location: loginadmin.php");
+        exit;
+    }
+    ?>
+
+    <h1>Category</h1>
+
+    <form action="" method="post">
+        <input type="text" name="keyword" size= "30" 
+        placceholder="Enter keyword..." autocomplete="off">
+        <button type= "submit" name= "search">Search</button>
+    </form>
+
+    <table border="1" class= "content-table">
+        <thead>
+            <tr>
+                <th>ID Kategori</th>
+                <th>Nama Kategori</th>
+                <th>Jumlah buku</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php while($res = mysqli_fetch_assoc($result)) : ?>
+                <tr>
+                <td> <?= $res["idKategori"]; ?></td>
+                <td> <?= $res["namaKategori"]; ?></td>
+                <td> <?= $res["jumlah"]; ?></td>
+                <td>
+                    <a href="editCategory.php?id=<?= $res["idKategori"]; ?>">Edit</a> |
+                    <a href="deleteCategory.php?id=<?= $res["idKategori"]; ?>" onclick= "return confirm('Delete this data?');">Delete</a>
+                </td>
+                </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+
+    <form action="" method="post">
+        <button type= "submit" name= "add">Add</button>
+        <button type= "submit" name= "back">Back</button>
+    </form>
+</body>
+</html>
