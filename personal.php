@@ -75,7 +75,7 @@ if( isset($_POST["loginuser"]))
 <div class = "container">
     <form action="" method= "post">
 
-        <h1>Edit Your Personal Data</h1>
+        <h1>Update Personal Data</h1>
         <hr>
 
         <input type="hidden"
@@ -114,7 +114,7 @@ if( isset($_POST["loginuser"]))
         value= "<?= $res['riwayatPeminjaman']; ?>"
         autocomplete= "off">
 
-        <button type= "submit" name= "update">Update</button>
+        <button type= "submit" name= "Update">Update</button>
         <button type= "submit" name="back">Back</button>
     </form>
 

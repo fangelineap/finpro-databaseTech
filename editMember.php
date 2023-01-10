@@ -59,27 +59,33 @@ if( isset($_POST["back"]))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Member</title>
+    <link rel="stylesheet" href="editMenu.css">
 </head>
 <body>
-    <h1>Edit Member - <?= $res["memberId"]; ?></h1>
+    <div class="container">
+        <div class="login">
+            <h1>Edit Member - <?= $res["memberId"]; ?></h1>
 
-    <form action="" method="post">
-        <label for="memberId"></label>
-        <input type="hidden" name="memberId" id="memberId" autocomplete= "off" value="<?= $res["memberId"]; ?>"required>
-        <label for="nama">Nama : </label>
-        <input type="text" name="nama" id="nama" autocomplete= "off" value="<?= $res["nama"]; ?>" required>
-        <label for="email">Email : </label>
-        <input type="text" name="email" id="email" autocomplete= "off" value="<?= $res["email"]; ?>" required>
-        <label for="noHp">Nomor HP : </label>
-        <input type="text" name="noHp" id="noHp" autocomplete= "off" value="<?= $res["noHp"]; ?>" required>
-        <label for="riwayatPeminjaman">Riwayat Peminjaman : </label>
-        <input type="text" name="riwayatPeminjaman" id="riwayatPeminjaman" autocomplete= "off" value="<?= $res["riwayatPeminjaman"]; ?>" required>
-        <button type="submit" name="editData">Edit data</button>
+            <form action="" method="post">
+                <label for="memberId"></label>
+                <input type="hidden" name="memberId" id="memberId" autocomplete= "off" value="<?= $res["memberId"]; ?>"required>
+                <label for="nama">Nama : </label>
+                <input type="text" name="nama" id="nama" autocomplete= "off" value="<?= $res["nama"]; ?>" required>
+                <label for="email">Email : </label>
+                <input type="text" name="email" id="email" autocomplete= "off" value="<?= $res["email"]; ?>" required>
+                <label for="noHp">Nomor HP : </label>
+                <input type="text" name="noHp" id="noHp" autocomplete= "off" value="<?= $res["noHp"]; ?>" required>
+                <label for="riwayatPeminjaman">Riwayat Peminjaman : </label>
+                <input type="text" name="riwayatPeminjaman" id="riwayatPeminjaman" autocomplete= "off" value="<?= $res["riwayatPeminjaman"]; ?>" required>
+                <button type="submit" name="editData">Edit data</button>
 
-    </form>
+            </form>
 
-    <form action="" method="post">
-        <button type="submit" name="back">Back</button>
-    </form>
+            <form action="" method="post" class="backButton">
+                <button type="submit" name="back">Back</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>

@@ -55,23 +55,31 @@ if( isset($_POST["back"]))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Shift</title>
+    <link rel="stylesheet" href="editMenu.css">
 </head>
 <body>
-    <h1>Edit Shift - <?= $res["shiftCode"]; ?></h1>
 
-    <form action="" method="post">
-        <label for="shiftCode"></label>
-        <input type="hidden" name="shiftCode" id="shiftCode" autocomplete= "off" value="<?= $res["shiftCode"]; ?>"required>
-        <label for="jamMulai">Jam Mulai : </label>
-        <input type="text" name="jamMulai" id="jamMulai" autocomplete= "off" value="<?= $res["jamMulai"]; ?>" required>
-        <label for="jamPulang">Jam Pulang : </label>
-        <input type="text" name="jamPulang" id="jamPulang" autocomplete= "off" value="<?= $res["jamPulang"]; ?>" required>
-        <button type="submit" name="editData">Edit data</button>
+<div class="container">
+    <div class="login">
+        <h1>Edit Shift - <?= $res["shiftCode"]; ?></h1>
 
-    </form>
+        <hr>
 
-    <form action="" method="post">
-        <button type="submit" name="back">Back</button>
-    </form>
+        <form action="" method="post">
+            <label for="shiftCode"></label>
+                <input type="hidden" name="shiftCode" id="shiftCode" autocomplete= "off" value="<?= $res["shiftCode"]; ?>"required>
+            <label for="jamMulai">Jam Mulai : </label>
+                <input type="text" name="jamMulai" id="jamMulai" autocomplete= "off" value="<?= $res["jamMulai"]; ?>" required>
+            <label for="jamPulang">Jam Pulang : </label>
+                <input type="text" name="jamPulang" id="jamPulang" autocomplete= "off" value="<?= $res["jamPulang"]; ?>" required>
+            <button type="submit" name="editData">Edit data</button>
+        </form>
+
+        <form action="" method="post" class="backButton">
+            <button type="submit" name="back">Back</button>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>

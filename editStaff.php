@@ -63,31 +63,36 @@ if( isset($_POST["back"]))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit data</title>
+    <link rel="stylesheet" href="editMenu.css">
 </head>
 <body>
-    <h1>Edit Staff - <?= $res["staffId"]; ?></h1>
+    <div class="container">
+        <div class="login">
+            <h1>Edit Staff - <?= $res["staffId"]; ?></h1>
 
-    <form action="" method="post">
-        <label for="staffId"></label>
-        <input type="hidden" name="staffId" id="staffId" autocomplete= "off" value="<?= $res["staffId"]; ?>"required>
-        <label for="shiftCode">Kode Shift : </label>
-            <select name="shiftCode" id="shiftCode">
-                <option value= "<?= $res["shiftCode"]; ?>"> <?= $res["shiftCode"]; ?></option>
-                <?php while ($ress = mysqli_fetch_assoc($resultShift)) : ?>
-                    <option value= "<?= $ress["shiftCode"]; ?>"> <?= $ress["shiftCode"]; ?></option>
-                <?php endwhile; ?>
-            </select>
-        <label for="nama">Nama : </label>
-        <input type="text" name="nama" id="nama" autocomplete= "off" value="<?= $res["nama"]; ?>" required>
-        <label for="noHp">Nomor HP : </label>
-        <input type="text" name="noHp" id="noHp" autocomplete= "off" value="<?= $res["noHp"]; ?>" required>
-        <label for="email">Email : </label>
-        <input type="text" name="email" id="email" autocomplete= "off" value="<?= $res["email"]; ?>" required>
-        <button type="submit" name="editData">Edit data</button>
-    </form>
+            <form action="" method="post">
+                <label for="staffId"></label>
+                <input type="hidden" name="staffId" id="staffId" autocomplete= "off" value="<?= $res["staffId"]; ?>"required>
+                <label for="shiftCode">Kode Shift : </label>
+                    <select name="shiftCode" id="shiftCode">
+                        <option value= "<?= $res["shiftCode"]; ?>"> <?= $res["shiftCode"]; ?></option>
+                        <?php while ($ress = mysqli_fetch_assoc($resultShift)) : ?>
+                            <option value= "<?= $ress["shiftCode"]; ?>"> <?= $ress["shiftCode"]; ?></option>
+                        <?php endwhile; ?>
+                    </select>
+                <label for="nama">Nama : </label>
+                <input type="text" name="nama" id="nama" autocomplete= "off" value="<?= $res["nama"]; ?>" required>
+                <label for="noHp">Nomor HP : </label>
+                <input type="text" name="noHp" id="noHp" autocomplete= "off" value="<?= $res["noHp"]; ?>" required>
+                <label for="email">Email : </label>
+                <input type="text" name="email" id="email" autocomplete= "off" value="<?= $res["email"]; ?>" required>
+                <button type="submit" name="editData">Edit data</button>
+            </form>
 
-    <form action="" method="post">
-        <button type="submit" name="back">Back</button>
-    </form>
+            <form action="" method="post" class="backButton">
+                <button type="submit" name="back">Back</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

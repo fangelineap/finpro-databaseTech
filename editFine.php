@@ -59,32 +59,37 @@ if( isset($_POST["back"]))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit data</title>
+    <link rel="stylesheet" href="editMenu.css">
 </head>
 <body>
-    <h1>Edit Fine - <?= $res["idDenda"]; ?></h1>
+    <div class="container">
+        <div class="login">
+            <h1>Edit Fine - <?= $res["idDenda"]; ?></h1>
 
-    <form action="" method="post">
-        <label for="idDenda"></label>
-        <input type="hidden" name="idDenda" id="idDenda" autocomplete= "off" value="<?= $res["idDenda"]; ?>"required>
-        <label for="totalDenda">Total Denda : </label>
-        <input type="text" name="totalDenda" id="totalDenda" autocomplete= "off" value="<?= $res["totalDenda"]; ?>" required>
-        <label for="hariKeterlambatan">Hari Keterlambatan : </label>
-        <input type="text" name="hariKeterlambatan" id="hariKeterlambatan" autocomplete= "off" value="<?= $res["hariKeterlambatan"]; ?>" required>
-        <label for="jenisPembayaran">Jenis Pembayaran : </label>
-        <input type="text" name="jenisPembayaran" id="jenisPembayaran" autocomplete= "off" value="<?= $res["jenisPembayaran"]; ?>" required>
-        <label for="jenisDenda">Jenis Denda : </label>
-        <select name="jenisDenda" id="jenisDenda">
-            <option value="<?= $res["jenisDenda"]; ?>"> <?= $res["jenisDenda"]; ?> </option>
-            <option value="-">-</option>
-            <option value="Hilang">Hilang</option>
-            <option value="Terlambat">Terlambat</option>
-        </select>
-        <button type="submit" name="editData">Edit data</button>
+            <form action="" method="post">
+                <label for="idDenda"></label>
+                <input type="hidden" name="idDenda" id="idDenda" autocomplete= "off" value="<?= $res["idDenda"]; ?>"required>
+                <label for="totalDenda">Total Denda : </label>
+                <input type="text" name="totalDenda" id="totalDenda" autocomplete= "off" value="<?= $res["totalDenda"]; ?>" required>
+                <label for="hariKeterlambatan">Hari Keterlambatan : </label>
+                <input type="text" name="hariKeterlambatan" id="hariKeterlambatan" autocomplete= "off" value="<?= $res["hariKeterlambatan"]; ?>" required>
+                <label for="jenisPembayaran">Jenis Pembayaran : </label>
+                <input type="text" name="jenisPembayaran" id="jenisPembayaran" autocomplete= "off" value="<?= $res["jenisPembayaran"]; ?>" required>
+                <label for="jenisDenda">Jenis Denda : </label>
+                <select name="jenisDenda" id="jenisDenda">
+                    <option value="<?= $res["jenisDenda"]; ?>"> <?= $res["jenisDenda"]; ?> </option>
+                    <option value="-">-</option>
+                    <option value="Hilang">Hilang</option>
+                    <option value="Terlambat">Terlambat</option>
+                </select>
+                <button type="submit" name="editData">Edit data</button>
 
-    </form>
+            </form>
 
-    <form action="" method="post">
-        <button type="submit" name="back">Back</button>
-    </form>
+            <form action="" method="post" class="backButton">
+                <button type="submit" name="back">Back</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

@@ -40,7 +40,8 @@ if( isset($_POST["add"]))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Category</title>
+    <link rel="stylesheet" href="adminMenu.css">
 </head>
 <body>
     <?php
@@ -51,42 +52,47 @@ if( isset($_POST["add"]))
     }
     ?>
 
-    <h1>Category</h1>
+    <div class="container">
+        <div class="login">
 
-    <form action="" method="post">
-        <input type="text" name="keyword" size= "30" 
-        placceholder="Enter keyword..." autocomplete="off">
-        <button type= "submit" name= "search">Search</button>
-    </form>
+        <h1>Category</h1>
 
-    <table border="1" class= "content-table">
-        <thead>
-            <tr>
-                <th>ID Kategori</th>
-                <th>Nama Kategori</th>
-                <th>Jumlah buku</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
+        <form action="" method="post">
+            <input type="text" name="keyword" size= "30" 
+            placeholder="Enter keyword..." autocomplete="off">
+            <button type= "submit" name= "search">Search</button>
+        </form>
 
-        <tbody>
-            <?php while($res = mysqli_fetch_assoc($result)) : ?>
+        <table border="1" class= "content-table">
+            <thead>
                 <tr>
-                <td> <?= $res["idKategori"]; ?></td>
-                <td> <?= $res["namaKategori"]; ?></td>
-                <td> <?= $res["jumlah"]; ?></td>
-                <td>
-                    <a href="editCategory.php?id=<?= $res["idKategori"]; ?>">Edit</a> |
-                    <a href="deleteCategory.php?id=<?= $res["idKategori"]; ?>" onclick= "return confirm('Delete this data?');">Delete</a>
-                </td>
+                    <th>ID Kategori</th>
+                    <th>Nama Kategori</th>
+                    <th>Jumlah buku</th>
+                    <th>Actions</th>
                 </tr>
-            <?php endwhile; ?>
-        </tbody>
-    </table>
+            </thead>
 
-    <form action="" method="post">
-        <button type= "submit" name= "add">Add</button>
-        <button type= "submit" name= "back">Back</button>
-    </form>
+            <tbody>
+                <?php while($res = mysqli_fetch_assoc($result)) : ?>
+                    <tr>
+                    <td> <?= $res["idKategori"]; ?></td>
+                    <td> <?= $res["namaKategori"]; ?></td>
+                    <td> <?= $res["jumlah"]; ?></td>
+                    <td>
+                        <a href="editCategory.php?id=<?= $res["idKategori"]; ?>">Edit</a> |
+                        <a href="deleteCategory.php?id=<?= $res["idKategori"]; ?>" onclick= "return confirm('Delete this data?');">Delete</a>
+                    </td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+
+        <form action="" method="post">
+            <button type= "submit" name= "add">Add</button>
+            <button type= "submit" name= "back">Back</button>
+        </form>
+        </div>
+    </div>
 </body>
 </html>

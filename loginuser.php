@@ -66,7 +66,7 @@ if ( isset($_POST["login"]) )
                 <input type="text"
                 name= "email"
                 id= "email"
-                placeholder="Enter your member id"
+                placeholder="Enter your email"
                 autocomplete= "off">
 
                 <label for="password">Password</label>

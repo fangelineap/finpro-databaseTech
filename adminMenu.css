@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT',
+    Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #667185;
+} 
+
+.container {
+    margin: 80px auto;
+    width: auto;
+    display: flex;
+    max-width: 1500px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    width: 90%;
+    margin: 10px 20px;
+}
+
+h1 {
+    margin: 50px 0 30px;
+    text-align: center;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+input {
+    width: 40%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.login {
+    width: 1500px;
+}
+
+a:link, a:visited {
+    background-color: #667185;
+    color: #fff;
+    padding: 8px 20px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+a:hover, a:active {
+    background-color: #272D2D;
+}
+
+button {
+    border: none;
+    outline: none;
+    padding: 8px;
+    width: 120px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background: #667185;
+}
+
+button:hover {
+    background: #272D2D;
+}
+
+table {
+    margin: 20px 50px;
+    padding: 50px;
+}
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px auto;
+    width: 1450px;
+    border-radius: 5px 5px 5px 5px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.content-table thead tr {
+    background-color: #667185;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    max-width: 250px;
+    padding: 10px 5px;
+    text-align: center;
+}
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #667185;
+    border-radius: 10px;
+}

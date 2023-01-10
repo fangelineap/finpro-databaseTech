@@ -26,13 +26,13 @@ if( !isset($_SESSION["loginuser"]))
         <div class = "login">
 
             <form action="personal.php" method= "">
-                <h1>Menu for user</h1>
+                <h1>User menu</h1>
                 <hr>
-                <button>Edit Personal Data</button>
+                <button>Update Personal Data</button>
             </form>
 
             <form action="borrow.php" method= "">
-                <button>Borrow</button>
+                <button>History & Book Search</button>
             </form>
 
             <form action="logout.php">

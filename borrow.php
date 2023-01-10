@@ -57,7 +57,7 @@ if( isset($_POST["back"]))
 
     <div class= "container">
         <div class="login">
-            <h1>Your Borrowing List</h1>
+            <h1>History</h1>
 
             <table border="1" class= "content-table">
                 <thead>

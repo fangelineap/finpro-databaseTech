@@ -55,22 +55,27 @@ if( isset($_POST["back"]))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit data</title>
+    <link rel="stylesheet" href="editMenu.css">
 </head>
 <body>
-    <h1>Edit Category - <?= $res["idKategori"]; ?></h1>
+    <div class="container">
+        <div class="login">
+            <h1>Edit Category - <?= $res["idKategori"]; ?></h1>
 
-    <form action="" method="post">
-        <label for="idKategori"></label>
-        <input type="hidden" name="idKategori" id="idKategori" autocomplete= "off" value="<?= $res["idKategori"]; ?>"required>
-        <label for="namaKategori">Nama Kategori : </label>
-        <input type="text" name="namaKategori" id="namaKategori" autocomplete= "off" value="<?= $res["namaKategori"]; ?>" required>
-        <label for="jumlah">Jumlah Buku : </label>
-        <input type="text" name="jumlah" id="jumlah" autocomplete= "off" value="<?= $res["jumlah"]; ?>" required>
-        <button type="submit" name="editData">Edit data</button>
-    </form>
+            <form action="" method="post">
+                <label for="idKategori"></label>
+                <input type="hidden" name="idKategori" id="idKategori" autocomplete= "off" value="<?= $res["idKategori"]; ?>"required>
+                <label for="namaKategori">Nama Kategori : </label>
+                <input type="text" name="namaKategori" id="namaKategori" autocomplete= "off" value="<?= $res["namaKategori"]; ?>" required>
+                <label for="jumlah">Jumlah Buku : </label>
+                <input type="text" name="jumlah" id="jumlah" autocomplete= "off" value="<?= $res["jumlah"]; ?>" required>
+                <button type="submit" name="editData">Edit data</button>
+            </form>
 
-    <form action="" method="post">
-        <button type="submit" name="back">Back</button>
-    </form>
+            <form action="" method="post" class="backButton">
+                <button type="submit" name="back">Back</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

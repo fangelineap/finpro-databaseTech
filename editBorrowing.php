@@ -79,58 +79,72 @@ if( isset($_POST["back"]))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Data</title>
+    <link rel="stylesheet" href="editMenu.css">
 </head>
 <body>
-    <h1>Edit Borrowing List - <?= $res["idPeminjaman"]; ?></h1>
+    <div class="container">
+        <div class="login">
+            <h1>Edit Borrowing List - <?= $res["idPeminjaman"]; ?></h1>
 
-    <form action="" method="post">
-        <label for="idPeminjaman"></label>
-        <input type="hidden" name="idPeminjaman" id="idPeminjaman" autocomplete= "off" value="<?= $res["idPeminjaman"]; ?>"required>
-        <label for="idDenda">ID Denda : </label>
-            <select name="idDenda" id="idDenda">
-                <option value= "<?= $res["idDenda"]; ?>"> <?= $res["idDenda"]; ?></option>
-                <?php while ($resDenda = mysqli_fetch_assoc($resultDenda)) : ?>
-                    <option value= "<?= $resDenda["idDenda"]; ?>"> <?= $resDenda["idDenda"]; ?></option>
-                <?php endwhile; ?>
-            </select>
-        <label for="memberId">ID Member : </label>
-            <select name="memberId" id="memberId">
-                <option value= "<?= $res["memberId"]; ?>"> <?= $res["memberId"]; ?></option>
-                <?php while ($resMember = mysqli_fetch_assoc($resultMember)) : ?>
-                    <option value= "<?= $resMember["memberId"]; ?>"> <?= $resMember["memberId"]; ?></option>
-                <?php endwhile; ?>
-            </select>
-        <label for="staffId">ID Staff : </label>
-            <select name="staffId" id="staffId">
-                <option value= "<?= $res["staffId"]; ?>"> <?= $res["staffId"]; ?></option>
-                <?php while ($resStaff = mysqli_fetch_assoc($resultStaff)) : ?>
-                    <option value= "<?= $resStaff["staffId"]; ?>"> <?= $resStaff["staffId"]; ?></option>
-                <?php endwhile; ?>
-            </select>
-        <label for="bookId">ID Buku : </label>
-            <select name="bookId" id="bookId">
-                <option value= "<?= $res["bookId"]; ?>"> <?= $res["bookId"]; ?></option>
-                <?php while ($resBooks = mysqli_fetch_assoc($resultBooks)) : ?>
-                    <option value= "<?= $resBooks["bookId"]; ?>"> <?= $resBooks["bookId"]; ?></option>
-                <?php endwhile; ?>
-            </select>
-        <label for="jumlahBuku">Jumlah Buku : </label>
-            <input type="text" name="jumlahBuku" id="jumlahBuku" autocomplete= "off" value="<?= $res["jumlahBuku"]; ?>" required>
-        <label for="tanggalPeminjaman">Tanggal Peminjaman : </label>
-            <input type="text" name="tanggalPeminjaman" id="tanggalPeminjaman" autocomplete= "off" value="<?= $res["tanggalPeminjaman"]; ?>" required>
-        <label for="tanggalPengembalian">Tanggal Pengembalian : </label>
-            <input type="text" name="tanggalPengembalian" id="tanggalPengembalian" autocomplete= "off" value="<?= $res["tanggalPengembalian"]; ?>" required>
-        <label for="bentukBuku">Bentuk Buku : </label>
-            <select name="bentukBuku" id="bentukBuku">
-                <option value= "<?= $res["bentukBuku"]; ?>"> <?= $res["bentukBuku"]; ?></option>
-                <option value="Fisik">Fisik</option>
-                <option value="Digital">Digital</option>
-            </select>
-        <button type="submit" name="editData">Edit data</button>
-    </form>
+            <form action="" method="post">
+                <label for="idPeminjaman"></label>
+                <input type="hidden" name="idPeminjaman" id="idPeminjaman" autocomplete= "off" value="<?= $res["idPeminjaman"]; ?>"required>
+                
+                <label for="idDenda">ID Denda : </label>
+                <select name="idDenda" id="idDenda">
+                    <option value= "<?= $res["idDenda"]; ?>"> <?= $res["idDenda"]; ?></option>
+                    <?php while ($resDenda = mysqli_fetch_assoc($resultDenda)) : ?>
+                        <option value= "<?= $resDenda["idDenda"]; ?>"> <?= $resDenda["idDenda"]; ?></option>
+                    <?php endwhile; ?>
+                </select>
+                
+                <label for="memberId">ID Member : </label>
+                <select name="memberId" id="memberId">
+                    <option value= "<?= $res["memberId"]; ?>"> <?= $res["memberId"]; ?></option>
+                    <?php while ($resMember = mysqli_fetch_assoc($resultMember)) : ?>
+                        <option value= "<?= $resMember["memberId"]; ?>"> <?= $resMember["memberId"]; ?></option>
+                    <?php endwhile; ?>
+                </select>
+                
+                <label for="staffId">ID Staff : </label>
+                <select name="staffId" id="staffId">
+                    <option value= "<?= $res["staffId"]; ?>"> <?= $res["staffId"]; ?></option>
+                    <?php while ($resStaff = mysqli_fetch_assoc($resultStaff)) : ?>
+                        <option value= "<?= $resStaff["staffId"]; ?>"> <?= $resStaff["staffId"]; ?></option>
+                    <?php endwhile; ?>
+                </select>
+                
+                <label for="bookId">ID Buku : </label>
+                <select name="bookId" id="bookId">
+                    <option value= "<?= $res["bookId"]; ?>"> <?= $res["bookId"]; ?></option>
+                    <?php while ($resBooks = mysqli_fetch_assoc($resultBooks)) : ?>
+                        <option value= "<?= $resBooks["bookId"]; ?>"> <?= $resBooks["bookId"]; ?></option>
+                    <?php endwhile; ?>
+                </select>
 
-    <form action="" method="post">
-        <button type="submit" name="back">Back</button>
-    </form>
+                <label for="jumlahBuku">Jumlah Buku : </label>
+                <input type="text" name="jumlahBuku" id="jumlahBuku" autocomplete= "off" value="<?= $res["jumlahBuku"]; ?>" required>
+                
+                <label for="tanggalPeminjaman">Tanggal Peminjaman : </label>
+                <input type="text" name="tanggalPeminjaman" id="tanggalPeminjaman" autocomplete= "off" value="<?= $res["tanggalPeminjaman"]; ?>" required>
+                
+                <label for="tanggalPengembalian">Tanggal Pengembalian : </label>
+                <input type="text" name="tanggalPengembalian" id="tanggalPengembalian" autocomplete= "off" value="<?= $res["tanggalPengembalian"]; ?>" required>
+                
+                <label for="bentukBuku">Bentuk Buku : </label>
+                <select name="bentukBuku" id="bentukBuku">
+                    <option value= "<?= $res["bentukBuku"]; ?>"> <?= $res["bentukBuku"]; ?></option>
+                    <option value="Fisik">Fisik</option>
+                    <option value="Digital">Digital</option>
+                </select>
+
+                <button type="submit" name="editData">Edit data</button>
+            </form>
+
+            <form action="" method="post" class="backButton">
+                <button type="submit" name="back">Back</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
