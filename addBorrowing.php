@@ -50,6 +50,15 @@ if (isset($_POST["addData"])) {
 if (isset($_POST["back"])) {
     header("Location: borrowing.php");
 }
+
+function random(){
+    $num = '0123456789';
+    $string = 'PNJ';
+    for($i = 0; $i < 7; $i++){
+        $string .= $num[rand(0, 9)];
+    }
+return $string;
+}
 ?>
 
 <!DOCTYPE html>
@@ -67,10 +76,13 @@ if (isset($_POST["back"])) {
     <div class="container">
         <div class="login">
             <h1>Add Borrowing List</h1>
-
+            <form id="generate" action="" method="post" top=50% right=100%>
+                    <button type="submit" id="generate" onclick="random()"> Generate Transaction ID </button>
+            </form>
+            
             <form action="" method="post">
                 <label for="idPeminjaman">ID Peminjaman : </label>
-                <input type="text" name="idPeminjaman" id="idPeminjaman" autocomplete="off" required>
+                <input type="text" name="idPeminjaman" id="idPeminjaman" value="<?php echo random(); ?>" autocomplete="off" required>
                 <label for="idDenda">ID Denda</label>
                 <select name="idDenda" id="idDenda">
                     <option disabled selected>Pilih</option>
