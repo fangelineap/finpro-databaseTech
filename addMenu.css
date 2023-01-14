@@ -92,6 +92,10 @@ button:hover {
     background: #272D2D;
 }
 
+#sCode-error{
+    color: red;
+}
+
 .backButton {
     margin-left: 80%;
 }
