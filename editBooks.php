@@ -76,7 +76,7 @@ if (isset($_POST["back"])) {
             <form action="" method="post">
                 <label for="bookId"></label>
                 <input type="hidden" name="bookId" id="bookId" autocomplete="off" value="<?= $res["bookId"]; ?>" required>
-                <label for="idKategori">Kode Shift : </label>
+                <label for="idKategori">ID Kategori : </label>
                 <select name="idKategori" id="idKategori">
                     <option value="<?= $res["idKategori"]; ?>"> <?= $res["idKategori"]; ?></option>
                     <?php while ($ress = mysqli_fetch_assoc($resultKategori)) : ?>
