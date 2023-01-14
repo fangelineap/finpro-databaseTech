@@ -114,7 +114,7 @@ if( isset($_POST["loginuser"]))
         value= "<?= $res['riwayatPeminjaman']; ?>"
         autocomplete= "off">
 
-        <button type= "submit" name= "Update">Update</button>
+        <button type= "submit" name= "update">Update</button>
         <button type= "submit" name="back">Back</button>
     </form>
 
