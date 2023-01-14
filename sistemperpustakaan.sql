@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2023 at 01:18 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jan 14, 2023 at 01:14 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -59,28 +59,7 @@ INSERT INTO `books` (`bookId`, `idKategori`, `judul`, `jumlah`, `status`, `tangg
 ('WSPJK-9202333288', 'MAJA', 'Majalah Bobo Edisi 48 3 Maret 2022', 5, 'Available', '3-Maret-2022', 15000, '9118536305183'),
 ('WSUFE-1041466813', 'FIKS', 'Bumi Manusia', 5, 'Available', '25-Aug-1980', 66000, '9780140256352'),
 ('XBVST-5208317967', 'FIKS', 'Laut Bercerita', 2, 'Available', 'Oct-2017', 171000, '9786024246945'),
-('ZZMOJ-5439089530', 'FIKS', 'Cantik Itu Luka', 2, 'Available', '2002', 142400, '9788426404183');
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `borrowavg`
--- (See below for the actual view)
---
-CREATE TABLE `borrowavg` (
-`AVG(jumlahBuku)` decimal(14,4)
-);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `compilationtrans`
---
-
-CREATE TABLE `compilationtrans` (
-  `idPeminjaman` char(20) NOT NULL,
-  `memberId` char(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+('ZZMOJ-5439089530', 'FIKS', 'Cantik Itu Luka', 2, 'Available', '2002', 142400, '9788426414183');
 
 -- --------------------------------------------------------
 
@@ -121,16 +100,15 @@ CREATE TABLE `denda` (
 --
 
 INSERT INTO `denda` (`idDenda`, `totalDenda`, `hariKeterlambatan`, `jenisPembayaran`, `jenisDenda`) VALUES
-('DH0215', 500000, 0, 'Cash', 'Hilang'),
+('DH0215', 500000, 0, 'OVO', 'Hilang'),
 ('DH4044', 500000, 0, 'BCA', 'Hilang'),
 ('DN0001', 0, 0, '-', '-'),
-('DN0002', 0, 0, '-', '-'),
 ('DN0804', 0, 0, '-', '-'),
-('DT0112', 10000, 2, 'GoPay', 'Terlambat'),
+('DN9065', 0, 0, 'Cash', '-'),
+('DT0112', 30000, 5, 'GoPay', 'Terlambat'),
 ('DT0215', 15000, 3, 'Cash', 'Terlambat'),
 ('DT0271', 10000, 2, 'Cash', 'Terlambat'),
-('DT0315', 25000, 5, 'Cash', 'Terlambat'),
-('DT0912', 20000, 4, 'GoPay', 'Terlambat');
+('DT0315', 25000, 5, 'Cash', 'Terlambat');
 
 -- --------------------------------------------------------
 
@@ -149,17 +127,28 @@ CREATE TABLE `kategori` (
 --
 
 INSERT INTO `kategori` (`idKategori`, `namaKategori`, `jumlah`) VALUES
-('BIOG', 'Biography', 123),
-('ENSI', 'Encylopedia', 30),
-('FIKS', 'Fiction', 477),
-('HIST', 'History', 21),
-('KAMU', 'Dictionary', 86),
-('KOMI', 'Komik', 308),
-('LINN', 'Light Novel', 264),
-('MAJA', 'Magazine', 18),
-('NASK', 'Script', 69),
-('NFIK', 'Non-Fiction', 185),
-('REFR', 'Referensi', 47);
+('BIOG', 'Biographies', 2),
+('ENSI', 'Encylopedia', 1),
+('FIKS', 'Fiction', 5),
+('HIST', 'History', 1),
+('KAMU', 'Dictionary', 1),
+('KOMI', 'Komik', 1),
+('LINN', 'Light Novel', 1),
+('MAJA', 'Magazine', 1),
+('NASK', 'Script', 1),
+('NFIK', 'Non-Fiction', 1),
+('REFR', 'Referensi', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `kategori_count`
+-- (See below for the actual view)
+--
+CREATE TABLE `kategori_count` (
+`count(books.jumlah)` bigint(21)
+,`idKategori` char(20)
+);
 
 -- --------------------------------------------------------
 
@@ -180,7 +169,7 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`memberId`, `nama`, `email`, `noHp`, `riwayatPeminjaman`) VALUES
-('MEMB0122', 'Vanessa Danuwijaya', 'vanessa@binus.ac.id', '08123456789', 0),
+('MEMB0122', 'Vanesa Danuwijaya', 'vanessa@gmail.com', '08123455789', 0),
 ('MEMB0991', 'Nile Calliora', 'nille.2701@binus.ac.id', '08220995555', 1),
 ('MEMB1102', 'Gaviella Elena', 'gaviella@binus.ac.id', '08992015432', 1),
 ('MEMB1234', 'Keshia Jean', 'keshia@binus.ac.id', '08987654321', 0),
@@ -189,7 +178,7 @@ INSERT INTO `member` (`memberId`, `nama`, `email`, `noHp`, `riwayatPeminjaman`) 
 ('MEMB2008', 'Angelica Beatrice', 'ang.beatrice@binus.ac.id', '08996274040', 0),
 ('MEMB2208', 'Marvella Graciana', 'marvellagrace@binus.ac.id', '081915352002', 8),
 ('MEMB2345', 'Fangeline', 'fangeline@binus.ac.id', '0829172846', 2),
-('MEMB2981', 'Annette Jeanne', 'annjeanne@binus.ac.id', '08192888241', 8);
+('MEMB2981', 'Annette Jeanny', 'annejeanny@binus.ac.id', '081928882411', 8);
 
 -- --------------------------------------------------------
 
@@ -203,39 +192,6 @@ CREATE TABLE `morningstaff` (
 ,`nama` char(20)
 ,`noHp` char(20)
 ,`email` char(50)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `mostbook`
--- (See below for the actual view)
---
-CREATE TABLE `mostbook` (
-`idKategori` char(20)
-,`MAX(jumlah)` int(11)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `mostcategory`
--- (See below for the actual view)
---
-CREATE TABLE `mostcategory` (
-`idKategori` char(20)
-,`total` bigint(21)
-);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `mosttitle`
--- (See below for the actual view)
---
-CREATE TABLE `mosttitle` (
-`judul` char(100)
-,`MAX(jumlah)` int(11)
 );
 
 -- --------------------------------------------------------
@@ -261,15 +217,13 @@ CREATE TABLE `peminjaman` (
 --
 
 INSERT INTO `peminjaman` (`idPeminjaman`, `idDenda`, `memberId`, `staffId`, `bookId`, `jumlahBuku`, `tanggalPeminjaman`, `tanggalPengembalian`, `bentukBuku`) VALUES
-('PNJ1098765', 'DN0804', 'MEMB1949', 'ST304', 'ZZMOJ-5439089530', 1, '2022-11-06', '2022-11-10', 'Fisik'),
+('PNJ1098765', 'DN0804', 'MEMB0122', 'ST310', 'ZZMOJ-5439089530', 1, '2022-11-08', '2022-11-13', 'Digital'),
 ('PNJ1234567', 'DT0112', 'MEMB2981', 'ST308', 'ICLKF-7204117374', 1, '2022-11-06', '2022-11-22', 'Digital'),
 ('PNJ1627009', 'DT0315', 'MEMB1287', 'ST302', 'PUNDW-5993370241', 5, '2022-11-03', '2022-11-22', 'Fisik'),
 ('PNJ1928300', 'DN0001', 'MEMB2008', 'ST310', 'WSUFE-1041466813', 1, '2022-11-01', '2022-11-08', 'Digital'),
 ('PNJ2617772', 'DT0271', 'MEMB1234', 'ST305', 'QDLKV-6356880234', 1, '2022-11-02', '2022-11-18', 'Fisik'),
 ('PNJ2817015', 'DH4044', 'MEMB0991', 'ST309', 'HUWIY-9084013871', 2, '2022-11-02', '0000-00-00', 'Fisik'),
-('PNJ7283526', 'DN0002', 'MEMB1102', 'ST303', 'UBUPC-6052907159', 2, '2022-11-04', '2022-11-10', 'Digital'),
 ('PNJ7284632', 'DH0215', 'MEMB2208', 'ST307', 'XBVST-5208317967', 2, '2022-11-10', '0000-00-00', 'Fisik'),
-('PNJ9001623', 'DT0912', 'MEMB0122', 'ST306', 'IFVRA-1276232523', 1, '2022-11-11', '2022-11-29', 'Digital'),
 ('PNJ9099678', 'DT0215', 'MEMB2345', 'ST301', 'HUWIY-9084013871', 1, '2022-11-03', '2022-11-20', 'Fisik');
 
 -- --------------------------------------------------------
@@ -292,7 +246,7 @@ INSERT INTO `shift` (`shiftCode`, `jamMulai`, `jamPulang`) VALUES
 ('SH101', '07:00:00', '10:00:00'),
 ('SH102', '10:00:01', '13:00:00'),
 ('SH103', '13:00:01', '16:00:00'),
-('SH104', '16:00:01', '19:00:00');
+('SH104', '16:05:01', '19:00:00');
 
 -- --------------------------------------------------------
 
@@ -314,24 +268,15 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`staffId`, `shiftCode`, `nama`, `noHp`, `email`) VALUES
 ('ST301', 'SH101', 'Lauren', '083456178293', 'laurenbliss@gmail.com'),
-('ST302', 'SH103', 'Rosie', '089127364528', 'rosieli@gmail.com'),
+('ST302', 'SH104', 'Rosa', '089127124528', 'rosielinaa@gmail.com'),
 ('ST303', 'SH104', 'Eden', '087263549172', 'edenlee@gmail.com'),
 ('ST304', 'SH101', 'Hellen', '018263548271', 'hellenpark@gmail.com'),
 ('ST305', 'SH102', 'Troy', '081723527182', 'troyanderson@yahoo.com'),
 ('ST306', 'SH104', 'Scarlett', '082937461222', 'scarlettjane@gmail.com'),
-('ST307', 'SH103', 'Nina', '018273645177', 'ninarowland@gmail.com'),
+('ST307', 'SH101', 'Ninna', '0182736451711', 'ninallowland@gmail.com'),
 ('ST308', 'SH102', 'Clara', '182736442817', 'claraadams@yahoo.com'),
 ('ST309', 'SH102', 'Luca', '087263517263', 'lucabalsa@gmail.com'),
 ('ST310', 'SH101', 'Ethan', '086785241322', 'ethanwinter@gmail.com');
-
--- --------------------------------------------------------
-
---
--- Structure for view `borrowavg`
---
-DROP TABLE IF EXISTS `borrowavg`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `borrowavg`  AS SELECT avg(`peminjaman`.`jumlahBuku`) AS `AVG(jumlahBuku)` FROM `peminjaman``peminjaman`  ;
 
 -- --------------------------------------------------------
 
@@ -345,38 +290,20 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
+-- Structure for view `kategori_count`
+--
+DROP TABLE IF EXISTS `kategori_count`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `kategori_count`  AS SELECT count(`books`.`jumlah`) AS `count(books.jumlah)`, `kategori`.`idKategori` AS `idKategori` FROM (`books` join `kategori`) WHERE `books`.`idKategori` = `kategori`.`idKategori` GROUP BY `books`.`idKategori``idKategori`  ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure for view `morningstaff`
 --
 DROP TABLE IF EXISTS `morningstaff`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `morningstaff`  AS SELECT `staff`.`staffId` AS `staffId`, `staff`.`shiftCode` AS `shiftCode`, `staff`.`nama` AS `nama`, `staff`.`noHp` AS `noHp`, `staff`.`email` AS `email` FROM `staff` WHERE `staff`.`shiftCode` like '%SH101%''%SH101%'  ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `mostbook`
---
-DROP TABLE IF EXISTS `mostbook`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mostbook`  AS SELECT `books`.`idKategori` AS `idKategori`, max(`books`.`jumlah`) AS `MAX(jumlah)` FROM `books``books`  ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `mostcategory`
---
-DROP TABLE IF EXISTS `mostcategory`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mostcategory`  AS SELECT `books`.`idKategori` AS `idKategori`, count(`books`.`jumlah`) AS `total` FROM `books``books`  ;
-
--- --------------------------------------------------------
-
---
--- Structure for view `mosttitle`
---
-DROP TABLE IF EXISTS `mosttitle`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `mosttitle`  AS SELECT `books`.`judul` AS `judul`, max(`books`.`jumlah`) AS `MAX(jumlah)` FROM `books``books`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `morningstaff`  AS SELECT `staff`.`staffId` AS `staffId`, `staff`.`shiftCode` AS `shiftCode`, `staff`.`nama` AS `nama`, `staff`.`noHp` AS `noHp`, `staff`.`email` AS `email` FROM `staff` WHERE `staff`.`shiftCode` like '%SH101%\'%SH101%''%SH101%\'%SH101%'  ;
 
 --
 -- Indexes for dumped tables
@@ -388,13 +315,6 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 ALTER TABLE `books`
   ADD PRIMARY KEY (`bookId`),
   ADD KEY `idKategori` (`idKategori`);
-
---
--- Indexes for table `compilationtrans`
---
-ALTER TABLE `compilationtrans`
-  ADD PRIMARY KEY (`idPeminjaman`),
-  ADD KEY `memberId` (`memberId`);
 
 --
 -- Indexes for table `denda`
@@ -448,14 +368,6 @@ ALTER TABLE `books`
   ADD CONSTRAINT `books_ibfk_1` FOREIGN KEY (`idKategori`) REFERENCES `kategori` (`idKategori`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `compilationtrans`
---
-ALTER TABLE `compilationtrans`
-  ADD CONSTRAINT `compilationtrans_ibfk_1` FOREIGN KEY (`idPeminjaman`) REFERENCES `peminjaman` (`idPeminjaman`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `compilationtrans_ibfk_2` FOREIGN KEY (`idPeminjaman`) REFERENCES `peminjaman` (`idPeminjaman`),
-  ADD CONSTRAINT `compilationtrans_ibfk_3` FOREIGN KEY (`memberId`) REFERENCES `member` (`memberId`);
-
---
 -- Constraints for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
@@ -463,12 +375,6 @@ ALTER TABLE `peminjaman`
   ADD CONSTRAINT `peminjaman_ibfk_2` FOREIGN KEY (`memberId`) REFERENCES `member` (`memberId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `peminjaman_ibfk_3` FOREIGN KEY (`staffId`) REFERENCES `staff` (`staffId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `peminjaman_ibfk_4` FOREIGN KEY (`bookId`) REFERENCES `books` (`bookId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `staff`
---
-ALTER TABLE `staff`
-  ADD CONSTRAINT `staff_ibfk_1` FOREIGN KEY (`shiftCode`) REFERENCES `shift` (`shiftCode`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
