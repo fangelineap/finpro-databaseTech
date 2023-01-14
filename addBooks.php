@@ -40,6 +40,21 @@ if (isset($_POST["addData"])) {
 if (isset($_POST["back"])) {
     header("Location: books.php");
 }
+
+    function random(){
+        $num = '0123456789';
+        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charslength = strlen($chars);
+        $string = '';
+        for($i = 0; $i < 5; $i++){
+            $string .= $chars[rand(0, $charslength - 1)];
+        }
+        $string .= '-';
+        for($i = 0; $i < 10; $i++){
+            $string .= $num[rand(0, 9)];
+        }
+    return $string;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -57,10 +72,13 @@ if (isset($_POST["back"])) {
     <div class="container">
         <div class="login">
             <h1>Add Books</h1>
-
+            <form id="generate" action="" method="post" top=50% right=100%>
+                    <button type="submit" id="generate" onclick="random()"> Generate Book ID </button>
+            </form>
+            
             <form action="" method="post">
                 <label for="bookId">ID Buku : </label>
-                <input type="text" name="bookId" id="bookId" autocomplete="off" required>
+                <input type="text" name="bookId" id="bookId" value="<?php echo random(); ?>" autocomplete="off" required>
                 <label for="idKategori">ID Kategori</label>
                 <select name="idKategori" id="idKategori">
                     <option disabled selected>Pilih</option>
