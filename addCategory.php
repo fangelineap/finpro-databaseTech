@@ -2,8 +2,7 @@
 
 $conn = mysqli_connect("localhost", "root", "", "sistemPerpustakaan");
 
-if( isset($_POST["addData"]))
-{
+if (isset($_POST["addData"])) {
     $idKategori = htmlspecialchars($_POST["idKategori"]);
     $namaKategori = htmlspecialchars($_POST["namaKategori"]);
     $jumlah = htmlspecialchars($_POST["jumlah"]);
@@ -13,55 +12,59 @@ if( isset($_POST["addData"]))
                 ('$idKategori', '$namaKategori', $jumlah)";
     mysqli_query($conn, $query);
 
-    if( mysqli_affected_rows($conn) > 0)
-    {
+    if (mysqli_affected_rows($conn) > 0) {
         echo "
             <script>
                 alert('Data has been added.');
                 document.location.href= 'category.php'
             </script>
         ";
-    }
-    else
-    {
+    } else {
         echo "
             <script>
                 alert('Error.');
                 document.location.href= 'category.php'
             </script>
         ";
-    } 
+    }
 }
 
-if( isset($_POST["back"]))
-{
+if (isset($_POST["back"])) {
     header("Location: category.php");
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="addMenu.css">
 </head>
+
 <body>
-    <h1>Add Category</h1>
+    <div class="container">
+        <div class="login">
+            <h1>Add Category</h1>
 
-    <form action="" method= "post">
-        <label for="idKategori">ID Kategori : </label>
-        <input type="text" name="idKategori" id="idKategori" autocomplete= "off" required>
-        <label for="namaKategori">Nama Kategori : </label>
-        <input type="text" name="namaKategori" id="namaKategori" autocomplete= "off" required>
-        <label for="jumlah">Jumlah Buku : </label>
-        <input type="text" name="jumlah" id="jumlah" autocomplete= "off" required>
-        <button type="submit" name="addData">Add data</button>
-    </form>
+            <form action="" method="post">
+                <label for="idKategori">ID Kategori : </label>
+                <input type="text" name="idKategori" id="idKategori" autocomplete="off" required>
+                <label for="namaKategori">Nama Kategori : </label>
+                <input type="text" name="namaKategori" id="namaKategori" autocomplete="off" required>
+                <label for="jumlah">Jumlah Buku : </label>
+                <input type="text" name="jumlah" id="jumlah" autocomplete="off" required>
+                <button type="submit" name="addData">Add data</button>
+            </form>
 
-    <form action="" method="post">
-        <button type="submit" name="back">Back</button>
-    </form>
+            <form action="" method="post" class="backButton">
+                <button type="submit" name="back">Back</button>
+            </form>
+        </div>
+    </div>
 </body>
+
 </html>
