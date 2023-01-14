@@ -37,6 +37,15 @@ if (isset($_POST["addData"])) {
 if (isset($_POST["back"])) {
     header("Location: staff.php");
 }
+
+function random(){
+    $num = '0123456789';
+    $string = 'ST';
+    for($i = 0; $i < 3; $i++){
+        $string .= $num[rand(0, 9)];
+    }
+return $string;
+}
 ?>
 
 <!DOCTYPE html>
@@ -54,10 +63,13 @@ if (isset($_POST["back"])) {
     <div class="container">
         <div class="login">
             <h1>Add Staff</h1>
-
+            <form id="generate" action="" method="post" top=50% right=100%>
+                    <button type="submit" id="generate" onclick="random()"> Generate Staff ID </button>
+            </form>
+            
             <form action="" method="post">
                 <label for="staffId">ID Staff : </label>
-                <input type="text" name="staffId" id="staffId" autocomplete="off" required>
+                <input type="text" name="staffId" id="staffId" value="<?php echo random(); ?>" autocomplete="off" required>
                 <label for="shiftCode">Kode Shift</label>
                 <select name="shiftCode" id="shiftCode">
                     <option disabled selected>Pilih</option>
