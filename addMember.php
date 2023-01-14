@@ -34,6 +34,16 @@ if (isset($_POST["addData"])) {
 if (isset($_POST["back"])) {
     header("Location: member.php");
 }
+
+function random()
+{
+    $num = '0123456789';
+    $string = 'MEMB';
+    for ($i = 0; $i < 4; $i++) {
+        $string .= $num[rand(0, 9)];
+    }
+    return $string;
+}
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +63,7 @@ if (isset($_POST["back"])) {
 
             <form action="" method="post">
                 <label for="memberId">ID Member : </label>
-                <input type="text" name="memberId" id="memberId" autocomplete="off" required>
+                <input type="text" name="memberId" id="memberId" autocomplete="off" value="<?php echo random();?>" required>
                 <label for="nama">Nama : </label>
                 <input type="text" name="nama" id="nama" autocomplete="off" required>
                 <label for="email">Email : </label>
