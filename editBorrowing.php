@@ -31,6 +31,7 @@ if( isset($_POST["editData"]))
     $tanggalPeminjaman = htmlspecialchars($_POST["tanggalPeminjaman"]);
     $tanggalPengembalian = htmlspecialchars($_POST["tanggalPengembalian"]);
     $bentukBuku = htmlspecialchars($_POST["bentukBuku"]);
+    $statusPeminjaman = htmlspecialchars($_POST["statusPeminjaman"]);
 
     $queryStaff = "UPDATE peminjaman SET
                 idPeminjaman = '$idPeminjaman', 
@@ -41,7 +42,8 @@ if( isset($_POST["editData"]))
                 jumlahBuku = '$jumlahBuku',
                 tanggalPeminjaman = '$tanggalPeminjaman',
                 tanggalPengembalian = '$tanggalPengembalian',
-                bentukBuku = '$bentukBuku'
+                bentukBuku = '$bentukBuku',
+                statusPeminjaman = '$statusPeminjaman'
             WHERE idPeminjaman = '$keyword'";
     mysqli_query($conn, $queryStaff);
 
@@ -136,6 +138,13 @@ if( isset($_POST["back"]))
                     <option value= "<?= $res["bentukBuku"]; ?>"> <?= $res["bentukBuku"]; ?></option>
                     <option value="Fisik">Fisik</option>
                     <option value="Digital">Digital</option>
+                </select>
+
+                <label for="statusPeminjaman">Status Peminjaman : </label>
+                <select name="statusPeminjaman" id="statusPeminjaman">
+                    <option value= "<?= $res["statusPeminjaman"]; ?>"> <?= $res["statusPeminjaman"]; ?></option>
+                    <option value="Belum">Belum</option>
+                    <option value="Sudah">Sudah</option>
                 </select>
 
                 <button type="submit" name="editData">Edit data</button>

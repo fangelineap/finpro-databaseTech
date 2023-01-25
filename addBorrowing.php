@@ -24,10 +24,11 @@ if (isset($_POST["addData"])) {
     $tanggalPeminjaman = htmlspecialchars($_POST["tanggalPeminjaman"]);
     $tanggalPengembalian = htmlspecialchars($_POST["tanggalPengembalian"]);
     $bentukBuku = htmlspecialchars($_POST["bentukBuku"]);
+    $statusPeminjaman = htmlspecialchars($_POST["statusPeminjaman"]);
 
     $query = "INSERT INTO peminjaman
                 VALUES
-                ('$idPeminjaman', '$idDenda', '$memberId', '$staffId', '$bookId', '$jumlahBuku', '$tanggalPeminjaman', '$tanggalPengembalian', '$bentukBuku')";
+                ('$idPeminjaman', '$idDenda', '$memberId', '$staffId', '$bookId', '$jumlahBuku', '$tanggalPeminjaman', '$tanggalPengembalian', '$bentukBuku', '$statusPeminjaman')";
     mysqli_query($conn, $query);
 
     if (mysqli_affected_rows($conn) > 0) {
@@ -122,6 +123,13 @@ return $string;
                     <option value="Fisik">Pilih</option>
                     <option value="Fisik">Fisik</option>
                     <option value="Digital">Digital</option>
+                </select>
+
+                <label for="statusPeminjaman">Status Peminjaman : </label>
+                <select name="statusPeminjaman" id="statusPeminjaman">
+                    <option value="Belum">Pilih</option>
+                    <option value="Belum">Belum</option>
+                    <option value="Sudah">Sudah</option>
                 </select>
                 <button type="submit" name="addData">Add data</button>
             </form>

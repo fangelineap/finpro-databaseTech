@@ -22,7 +22,8 @@ if( isset($_POST["search"]))
         staffId LIKE '%$keyword%' OR
         bookId LIKE '%$keyword%' OR
         tanggalPeminjaman LIKE '%$keyword%' OR
-        tanggalPengembalian LIKE '%$keyword%'
+        tanggalPengembalian LIKE '%$keyword%' OR
+        statusPeminjaman LIKE '%$keyword%'
         ";
         $result = mysqli_query($conn, $querySearch);
     }
@@ -79,6 +80,7 @@ if( isset($_POST["add"]))
                         <th>Tanggal Peminjaman</th>
                         <th>Tanggal Pengembalian</th>
                         <th>Bentuk Buku</th>
+                        <th>Status Peminjaman</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -95,6 +97,7 @@ if( isset($_POST["add"]))
                         <td> <?= $res["tanggalPeminjaman"]; ?></td>
                         <td> <?= $res["tanggalPengembalian"]; ?></td>
                         <td> <?= $res["bentukBuku"]; ?></td>
+                        <td> <?= $res["statusPeminjaman"]; ?></td>
                         <td>
                             <a href="editBorrowing.php?id=<?= $res["idPeminjaman"]; ?>">Edit</a> |
                             <a href="deleteBorrowing.php?id=<?= $res["idPeminjaman"]; ?>" onclick= "return confirm('Delete this data?');">Delete</a>
