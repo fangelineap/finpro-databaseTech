@@ -5,11 +5,10 @@ $conn = mysqli_connect("localhost", "root", "", "sistemPerpustakaan");
 if (isset($_POST["addData"])) {
     $idKategori = htmlspecialchars($_POST["idKategori"]);
     $namaKategori = htmlspecialchars($_POST["namaKategori"]);
-    $jumlah = htmlspecialchars($_POST["jumlah"]);
 
     $query = "INSERT INTO kategori
                 VALUES
-                ('$idKategori', '$namaKategori', $jumlah)";
+                ('$idKategori', '$namaKategori')";
     mysqli_query($conn, $query);
 
     if (mysqli_affected_rows($conn) > 0) {
@@ -41,7 +40,7 @@ if (isset($_POST["back"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add Data</title>
     <link rel="stylesheet" href="addMenu.css">
 </head>
 
@@ -55,8 +54,6 @@ if (isset($_POST["back"])) {
                 <input type="text" name="idKategori" id="idKategori" autocomplete="off" required>
                 <label for="namaKategori">Nama Kategori : </label>
                 <input type="text" name="namaKategori" id="namaKategori" autocomplete="off" required>
-                <label for="jumlah">Jumlah Buku : </label>
-                <input type="text" name="jumlah" id="jumlah" autocomplete="off" required>
                 <button type="submit" name="addData">Add data</button>
             </form>
 

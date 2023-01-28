@@ -68,7 +68,6 @@ if( isset($_POST["add"]))
                 <tr>
                     <th>ID Kategori</th>
                     <th>Nama Kategori</th>
-                    <th>Jumlah buku</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -78,7 +77,6 @@ if( isset($_POST["add"]))
                     <tr>
                     <td> <?= $res["idKategori"]; ?></td>
                     <td> <?= $res["namaKategori"]; ?></td>
-                    <td> <?= $res["jumlah"]; ?></td>
                     <td>
                         <a href="editCategory.php?id=<?= $res["idKategori"]; ?>">Edit</a> |
                         <a href="deleteCategory.php?id=<?= $res["idKategori"]; ?>" onclick= "return confirm('Delete this data?');">Delete</a>

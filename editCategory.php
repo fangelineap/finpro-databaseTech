@@ -12,12 +12,10 @@ if( isset($_POST["editData"]))
 {
     $idKategori = htmlspecialchars($_POST["idKategori"]);
     $namaKategori = htmlspecialchars($_POST["namaKategori"]);
-    $jumlah = htmlspecialchars($_POST["jumlah"]);
 
     $query = "UPDATE kategori SET
                 idKategori = '$idKategori', 
                 namaKategori = '$namaKategori', 
-                jumlah = $jumlah
             WHERE idKategori = '$idKategori'";
     mysqli_query($conn, $query);
 
@@ -67,8 +65,6 @@ if( isset($_POST["back"]))
                 <input type="hidden" name="idKategori" id="idKategori" autocomplete= "off" value="<?= $res["idKategori"]; ?>"required>
                 <label for="namaKategori">Nama Kategori : </label>
                 <input type="text" name="namaKategori" id="namaKategori" autocomplete= "off" value="<?= $res["namaKategori"]; ?>" required>
-                <label for="jumlah">Jumlah Buku : </label>
-                <input type="text" name="jumlah" id="jumlah" autocomplete= "off" value="<?= $res["jumlah"]; ?>" required>
                 <button type="submit" name="editData">Edit data</button>
             </form>
 
