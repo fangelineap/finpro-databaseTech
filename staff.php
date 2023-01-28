@@ -71,6 +71,7 @@ if( isset($_POST["add"]))
                         <th>Nama</th>
                         <th>Nomor HP</th>
                         <th>Email</th>
+                        <th>Jabatan</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -83,6 +84,7 @@ if( isset($_POST["add"]))
                         <td> <?= $res["nama"]; ?></td>
                         <td> <?= $res["noHp"]; ?></td>
                         <td> <?= $res["email"]; ?></td>
+                        <td> <?= $res["jabatan"]; ?></td>
                         <td>
                             <a href="editStaff.php?id=<?= $res["staffId"]; ?>">Edit</a> |
                             <a href="deleteStaff.php?id=<?= $res["staffId"]; ?>" onclick= "return confirm('Delete this data?');">Delete</a>

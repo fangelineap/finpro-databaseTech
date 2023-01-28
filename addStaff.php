@@ -11,10 +11,11 @@ if (isset($_POST["addData"])) {
     $nama = htmlspecialchars($_POST["nama"]);
     $noHp = htmlspecialchars($_POST["noHp"]);
     $email = htmlspecialchars($_POST["email"]);
+    $jabatan = htmlspecialchars($_POST["jabatan"]);
 
     $query = "INSERT INTO staff
                 VALUES
-                ('$staffId', '$shiftCode', '$nama', '$noHp', '$email')";
+                ('$staffId', '$shiftCode', '$nama', '$noHp', '$email', '$jabatan')";
     mysqli_query($conn, $query);
 
     if (mysqli_affected_rows($conn) > 0) {
@@ -83,6 +84,8 @@ return $string;
                 <input type="text" name="noHp" id="noHp" autocomplete="off" required>
                 <label for="email">Email : </label>
                 <input type="text" name="email" id="email" autocomplete="off" required>
+                <label for="jabatan">Jabatan : </label>
+                <input type="text" name="jabatan" id="jabatan" autocomplete="off" required>
                 <button type="submit" name="addData">Add data</button>
             </form>
 

@@ -2,7 +2,7 @@
 $memberId = $_COOKIE['pass'];
 $conn = mysqli_connect("localhost", "root", "", "sistemperpustakaan");
 $query = "SELECT peminjaman.idPeminjaman, peminjaman.idDenda, peminjaman.staffId, peminjaman.bookId, peminjaman.tanggalPeminjaman,
-peminjaman.tanggalPengembalian, peminjaman.bentukBuku, books.judul, books.idKategori, books.isbn
+peminjaman.tanggalPengembalian, peminjaman.bentukBuku, books.judul, books.idKategori, books.isbn, peminjaman.statusPeminjaman
 FROM peminjaman
 INNER JOIN books ON peminjaman.bookId = books.bookId AND peminjaman.memberId = '$memberId'";
 $queryBooks = "SELECT * FROM books";
@@ -72,6 +72,7 @@ if( isset($_POST["back"]))
                     <th>Judul</th>
                     <th>ID Kategori</th>
                     <th>ISBN</th>
+                    <th>Status Peminjaman</th>
                 </tr>
                 </thead>
 
@@ -88,6 +89,7 @@ if( isset($_POST["back"]))
                         <td> <?= $res["judul"]; ?></td>
                         <td> <?= $res["idKategori"]; ?></td>
                         <td> <?= $res["isbn"]; ?></td>
+                        <td> <?= $res["statusPeminjaman"]; ?></td>
                     </tr>
                 <?php endwhile; ?>
                 </tbody>

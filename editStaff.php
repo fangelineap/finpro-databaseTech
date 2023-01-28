@@ -19,13 +19,15 @@ if( isset($_POST["editData"]))
     $nama = htmlspecialchars($_POST["nama"]);
     $noHp = htmlspecialchars($_POST["noHp"]);
     $email = htmlspecialchars($_POST["email"]);
+    $jabatan = htmlspecialchars($_POST["jabatan"]);
 
     $queryStaff = "UPDATE staff SET
                 staffId = '$staffId', 
                 shiftCode = '$shiftCode', 
                 nama = '$nama',
                 noHp = '$noHp',
-                email = '$email'
+                email = '$email',
+                jabatan = '$jabatan'
             WHERE staffId = '$keyword'";
     mysqli_query($conn, $queryStaff);
 
@@ -86,6 +88,8 @@ if( isset($_POST["back"]))
                 <input type="text" name="noHp" id="noHp" autocomplete= "off" value="<?= $res["noHp"]; ?>" required>
                 <label for="email">Email : </label>
                 <input type="text" name="email" id="email" autocomplete= "off" value="<?= $res["email"]; ?>" required>
+                <label for="jabatan">Jabatan : </label>
+                <input type="text" name="jabatan" id="jabatan" autocomplete= "off" value="<?= $res["jabatan"]; ?>" required>
                 <button type="submit" name="editData">Edit data</button>
             </form>
 
