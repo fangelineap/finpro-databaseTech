@@ -3,7 +3,9 @@
 $conn = mysqli_connect("localhost", "root", "", "sistemPerpustakaan");
 
 $query = "SELECT * FROM kategori ORDER BY namaKategori";
+$query1 = "SELECT * FROM kategori_count ORDER BY namaKategori";
 $result = mysqli_query($conn, $query);
+$result1 = mysqli_query($conn, $query1);
 
 if( isset($_POST["search"]))
 {
@@ -73,10 +75,11 @@ if( isset($_POST["add"]))
             </thead>
 
             <tbody>
-                <?php while($res = mysqli_fetch_assoc($result)) : ?>
+                <?php while($res = mysqli_fetch_assoc($result) AND $res1 = mysqli_fetch_assoc($result1)) : ?>
                     <tr>
                     <td> <?= $res["idKategori"]; ?></td>
                     <td> <?= $res["namaKategori"]; ?></td>
+                    <td> <?= $res1["jumlah"]; ?></td>
                     <td>
                         <a href="editCategory.php?id=<?= $res["idKategori"]; ?>">Edit</a> |
                         <a href="deleteCategory.php?id=<?= $res["idKategori"]; ?>" onclick= "return confirm('Delete this data?');">Delete</a>
